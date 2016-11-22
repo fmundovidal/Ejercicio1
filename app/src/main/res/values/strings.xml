@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Ejercicio1</string>
+    <string name="button_a1_text">"Display info"</string>
+    <string name="button_a2_text">"Start a new Activity"</string>
+    <string name="no_info_text">No info returned</string>
+    <string name="title_activity_2">Activity2</string>
+    <string name="ok_button">OK</string>
+</resources>
