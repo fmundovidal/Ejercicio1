@@ -13,7 +13,7 @@ import android.widget.EditText;
 
 public class Activity2 extends AppCompatActivity implements View.OnClickListener{
 
-    private EditText mEdit = (EditText)findViewById(R.id.textWritten);
+    private EditText mEdit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,24 +21,8 @@ public class Activity2 extends AppCompatActivity implements View.OnClickListener
         setContentView(R.layout.activity_2);
 
         this.mEdit = (EditText) this.findViewById(R.id.textWritten);
-        final Button button_ok = (Button) findViewById(R.id.ok_button);
-
-        /*button_ok.setOnClickListener(new View.OnClickListener(){
-
-            public void onClick(View v){
-                Intent resultIntent = new Intent();
-
-              //  resultIntent.putExtra("returnString",this.mEdit.getText().toString());
-
-                setResult(Activity.RESULT_OK,resultIntent);
-                finish();
-                // Toast.makeText(getApplicationContext(),"Button pressed",Toast.LENGTH_SHORT).show();  //enseñar en pantalla del dispositivo
-
-            }
-        });
-*/
-        final Button startAct_Btn = (Button) this.findViewById(R.id.ok_button);
-        startAct_Btn.setOnClickListener(this);
+        final Button button_ok = (Button) this.findViewById(R.id.ok_button);
+            button_ok.setOnClickListener(this);
 
     }
 
@@ -51,11 +35,13 @@ public class Activity2 extends AppCompatActivity implements View.OnClickListener
     @Override
     public void onClick(View view) {
 
-        if(view.getId()==R.id.ok_button){
-            Intent resultIntent = new Intent();
-            resultIntent.putExtra("returnString",this.mEdit.getText().toString());
-            setResult(Activity.RESULT_OK,resultIntent);
-            finish();
+        if(view.getId()==R.id.ok_button) {
+            if (this.mEdit != null) {
+                Intent resultIntent = new Intent();
+                resultIntent.putExtra("returnString", this.mEdit.getText().toString());
+                setResult(Activity.RESULT_OK, resultIntent);
+                finish();
+            }
         }
     }
 }

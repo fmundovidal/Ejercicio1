@@ -16,6 +16,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private TextView dispInfo_TextView;
     private String retInfoString;
+
     public static final int ACTIVITY_REQUEST_CODE = 100;
 
     @Override
@@ -23,24 +24,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
-        final Button button_btm = (Button) findViewById(R.id.button_btm);
-        /*button_btm.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                Intent myIntent = new Intent(getApplicationContext(),Activity2.class);
-
-                startActivityForResult(myIntent,0);
-
-
-
-               // Toast.makeText(getApplicationContext(),"Button pressed",Toast.LENGTH_SHORT).show();  //enseñar en pantalla del dispositivo
-
-            }
-        });*/
         final Button startAct_Btn = (Button) this.findViewById(R.id.button_btm);
             startAct_Btn.setOnClickListener(this);
 
+        this.dispInfo_TextView = (TextView) this.findViewById(R.id.textField);
+
+        final Button info_btn = (Button) this.findViewById(R.id.button_top);
+            info_btn.setOnClickListener(this);
     }
 
     @Override
@@ -91,7 +81,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if(view.getId()==R.id.button_btm) {
             Intent myIntent = new Intent(getApplicationContext(), Activity2.class);
 
-            this.startActivityForResult(myIntent, 0);
+            this.startActivityForResult(myIntent,MainActivity.ACTIVITY_REQUEST_CODE);
         }
 
         else if(view.getId()==R.id.button_top){
